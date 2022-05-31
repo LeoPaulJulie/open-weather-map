@@ -1,14 +1,14 @@
 import 'package:injectable/injectable.dart';
-import 'package:open_weather_map/core/model/login_model.dart';
+import 'package:open_weather_map/core/model/user_model.dart';
 
 abstract class ILoginService {
-  Future<LoginModel> login(String login, String password);
+  Future<UserModel> login(String login, String password);
 }
 
 @Singleton(as: ILoginService)
 class LoginService implements ILoginService {
   @override
-  Future<LoginModel> login(String login, String password) {
+  Future<UserModel> login(String login, String password) {
     throw UnimplementedError();
   }
 }
@@ -17,7 +17,7 @@ class LoginService implements ILoginService {
 @Singleton(as: ILoginService)
 class MockLoginService implements ILoginService {
   @override
-  Future<LoginModel> login(String login, String password) {
-    return Future.value(const LoginModel(firstName: "John", lastName: "Doe"));
+  Future<UserModel> login(String login, String password) {
+    return Future.value(const UserModel(firstName: "John", lastName: "Doe"));
   }
 }

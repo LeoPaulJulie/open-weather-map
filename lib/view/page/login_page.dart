@@ -1,19 +1,38 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:open_weather_map/common/handler.dart';
-import 'package:open_weather_map/data/service/login_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:open_weather_map/data/service/services.dart';
+import 'package:open_weather_map/router/app_router.dart';
 import 'package:open_weather_map/view/common/custom_text_field.dart';
-import 'package:provider/provider.dart';
+import 'package:open_weather_map/view/cubit/login/login_cubit.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget implements AutoRouteWrapper {
   const LoginPage({Key? key}) : super(key: key);
 
   final String title = "Login";
 
   @override
   State<LoginPage> createState() => _LoginPageState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+      create: (context) =>
+          LoginCubit(Services.loginService, Services.sharedPreferencesService),
+      child: this,
+    );
+  }
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late final LoginCubit loginCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    loginCubit = context.read<LoginCubit>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const CustomTextField("Password"),
             ElevatedButton(
-              onPressed: onClickButton,
+              onPressed: () => onClickButton(context),
               child: const Text('VALID'),
             ),
           ],
@@ -42,9 +61,9 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future onClickButton() async {
-    final loginService = context.read<ILoginService>();
-    final user = await loginService.login("login", "password");
-    handlePrint(user);
+  void onClickButton(BuildContext context) {
+    loginCubit.loggin("", "").then((user) {
+      context.goToHomePage();
+    });
   }
 }
