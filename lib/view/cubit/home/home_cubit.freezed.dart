@@ -19,21 +19,21 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loaded,
+    required TResult Function(List<WeatherDateDTO> items) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -123,7 +123,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loaded,
+    required TResult Function(List<WeatherDateDTO> items) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -133,7 +133,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
   }) {
     return initial?.call();
@@ -143,7 +143,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -196,6 +196,7 @@ abstract class _Initial implements HomeState {
 abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
+  $Res call({List<WeatherDateDTO> items});
 }
 
 /// @nodoc
@@ -206,63 +207,92 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
   @override
   _$_Loaded get _value => super._value as _$_Loaded;
+
+  @override
+  $Res call({
+    Object? items = freezed,
+  }) {
+    return _then(_$_Loaded(
+      items == freezed
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<WeatherDateDTO>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Loaded with DiagnosticableTreeMixin implements _Loaded {
-  const _$_Loaded();
+  const _$_Loaded(final List<WeatherDateDTO> items) : _items = items;
+
+  final List<WeatherDateDTO> _items;
+  @override
+  List<WeatherDateDTO> get items {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.loaded()';
+    return 'HomeState.loaded(items: $items)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'HomeState.loaded'));
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState.loaded'))
+      ..add(DiagnosticsProperty('items', items));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loaded);
+        (other.runtimeType == runtimeType &&
+            other is _$_Loaded &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loaded,
+    required TResult Function(List<WeatherDateDTO> items) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded();
+    return loaded(items);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
   }) {
-    return loaded?.call();
+    return loaded?.call(items);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded();
+      return loaded(items);
     }
     return orElse();
   }
@@ -303,7 +333,12 @@ class _$_Loaded with DiagnosticableTreeMixin implements _Loaded {
 }
 
 abstract class _Loaded implements HomeState {
-  const factory _Loaded() = _$_Loaded;
+  const factory _Loaded(final List<WeatherDateDTO> items) = _$_Loaded;
+
+  List<WeatherDateDTO> get items => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -377,7 +412,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loaded,
+    required TResult Function(List<WeatherDateDTO> items) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -387,7 +422,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
   }) {
     return error?.call(message);
@@ -397,7 +432,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<WeatherDateDTO> items)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

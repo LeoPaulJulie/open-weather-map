@@ -37,7 +37,8 @@ class AppRouter extends _i3.RootStackRouter {
           routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return _i3.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i2.HomePage(key: args.key, title: args.title));
+          child: _i3.WrappedRoute(
+              child: _i2.HomePage(key: args.key, title: args.title)));
     }
   };
 
