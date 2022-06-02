@@ -17,10 +17,9 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginService, this.sharedPreferencesService)
       : super(const LoginState.initial());
 
-  Future<UserModel> loggin(String login, String password) {
-    final user = loginService.login(login, password);
-    sharedPreferencesService.setBool(SharedPreferencesService.loggedKey,
-        value: true);
+  Future<UserModel> loggin(String login, String password) async {
+    final user = await loginService.login(login, password);
+    sharedPreferencesService.setBool(SharedPreferencesService.loggedKey, value: true);
 
     return user;
   }
