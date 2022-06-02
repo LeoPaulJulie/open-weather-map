@@ -8,9 +8,9 @@ import 'package:open_weather_map/view/common/extensions.dart';
 import 'package:open_weather_map/view/cubit/home/home_cubit.dart';
 
 class HomePage extends StatefulWidget with AutoRouteWrapper {
-  const HomePage({Key? key, this.title}) : super(key: key);
+  const HomePage(this.title, {Key? key}) : super(key: key);
 
-  final String? title;
+  final String title;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title ?? ""),
+        title: Text(widget.title),
       ),
       body: Center(
         child: Padding(
@@ -57,19 +57,37 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget getItems(List<WeatherDateDTO> items) {
-    return Column(
-      children: List.generate(
-        items.length,
-        (index) {
-          return Column(
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return Container(
+          color: Colors.blue,
+          margin: 5.0.all,
+          child: Row(
             children: [
-              Text(items[index].dt!.toDateTime.toFRFormat),
-              Text(items[index].weather?.first.description ?? 'inconnu'),
-              const SizedBox(height: 10),
+              const Image(
+                width: 50,
+                height: 50,
+                image: NetworkImage(
+                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(items[index].dt!.toDateTime.toFRFormat),
+                  Text(items[index].weather?.first.description ?? 'inconnu'),
+                  const SizedBox(height: 10),
+                ],
+              ),
             ],
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 

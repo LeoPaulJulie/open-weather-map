@@ -33,12 +33,11 @@ class AppRouter extends _i3.RootStackRouter {
           child: _i3.WrappedRoute(child: const _i1.LoginPage()));
     },
     HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      final args = routeData.argsAs<HomeRouteArgs>();
       return _i3.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i3.WrappedRoute(
-              child: _i2.HomePage(key: args.key, title: args.title)));
+          child:
+              _i3.WrappedRoute(child: _i2.HomePage(args.title, key: args.key)));
     }
   };
 
@@ -62,22 +61,22 @@ class LoginRoute extends _i3.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.HomePage]
 class HomeRoute extends _i3.PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({_i4.Key? key, String? title})
+  HomeRoute({required String title, _i4.Key? key})
       : super(HomeRoute.name,
-            path: '/', args: HomeRouteArgs(key: key, title: title));
+            path: '/', args: HomeRouteArgs(title: title, key: key));
 
   static const String name = 'HomeRoute';
 }
 
 class HomeRouteArgs {
-  const HomeRouteArgs({this.key, this.title});
+  const HomeRouteArgs({required this.title, this.key});
+
+  final String title;
 
   final _i4.Key? key;
 
-  final String? title;
-
   @override
   String toString() {
-    return 'HomeRouteArgs{key: $key, title: $title}';
+    return 'HomeRouteArgs{title: $title, key: $key}';
   }
 }

@@ -8,10 +8,10 @@ extension AppRouterExtensions on BuildContext {
       ..push(const LoginRoute());
   }
 
-  void goToHomePage() {
+  void goToHomePage(String title) {
     router
       ..popUntilRoot()
       ..removeLast()
-      ..push(HomeRoute());
+      ..push(HomeRoute(title: title));
   }
 }
