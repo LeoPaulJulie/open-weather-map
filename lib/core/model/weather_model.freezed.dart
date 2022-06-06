@@ -274,6 +274,7 @@ mixin _$WeatherDateDTO {
   int? get visibility => throw _privateConstructorUsedError;
   double? get pop => throw _privateConstructorUsedError;
   SysDTO? get sys => throw _privateConstructorUsedError;
+  @JsonKey(name: "dt_txt")
   String? get dtTxt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -296,7 +297,7 @@ abstract class $WeatherDateDTOCopyWith<$Res> {
       int? visibility,
       double? pop,
       SysDTO? sys,
-      String? dtTxt});
+      @JsonKey(name: "dt_txt") String? dtTxt});
 
   $MainDTOCopyWith<$Res>? get main;
   $CloudsDTOCopyWith<$Res>? get clouds;
@@ -426,7 +427,7 @@ abstract class _$$_WeatherDateDTOCopyWith<$Res>
       int? visibility,
       double? pop,
       SysDTO? sys,
-      String? dtTxt});
+      @JsonKey(name: "dt_txt") String? dtTxt});
 
   @override
   $MainDTOCopyWith<$Res>? get main;
@@ -514,7 +515,7 @@ class _$_WeatherDateDTO implements _WeatherDateDTO {
       this.visibility,
       this.pop,
       this.sys,
-      this.dtTxt})
+      @JsonKey(name: "dt_txt") this.dtTxt})
       : _weather = weather;
 
   factory _$_WeatherDateDTO.fromJson(Map<String, dynamic> json) =>
@@ -544,6 +545,7 @@ class _$_WeatherDateDTO implements _WeatherDateDTO {
   @override
   final SysDTO? sys;
   @override
+  @JsonKey(name: "dt_txt")
   final String? dtTxt;
 
   @override
@@ -603,7 +605,7 @@ abstract class _WeatherDateDTO implements WeatherDateDTO {
       final int? visibility,
       final double? pop,
       final SysDTO? sys,
-      final String? dtTxt}) = _$_WeatherDateDTO;
+      @JsonKey(name: "dt_txt") final String? dtTxt}) = _$_WeatherDateDTO;
 
   factory _WeatherDateDTO.fromJson(Map<String, dynamic> json) =
       _$_WeatherDateDTO.fromJson;
@@ -625,6 +627,7 @@ abstract class _WeatherDateDTO implements WeatherDateDTO {
   @override
   SysDTO? get sys => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: "dt_txt")
   String? get dtTxt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -639,13 +642,19 @@ MainDTO _$MainDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MainDTO {
   double? get temp => throw _privateConstructorUsedError;
+  @JsonKey(name: "feels_like")
   double? get feelsLike => throw _privateConstructorUsedError;
+  @JsonKey(name: "temp_min")
   double? get tempMin => throw _privateConstructorUsedError;
+  @JsonKey(name: "temp_max")
   double? get tempMax => throw _privateConstructorUsedError;
   int? get pressure => throw _privateConstructorUsedError;
+  @JsonKey(name: "sea_level")
   int? get seaLevel => throw _privateConstructorUsedError;
+  @JsonKey(name: "grnd_level")
   int? get grndLevel => throw _privateConstructorUsedError;
   int? get humidity => throw _privateConstructorUsedError;
+  @JsonKey(name: "temp_kf")
   double? get tempKf => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -659,14 +668,14 @@ abstract class $MainDTOCopyWith<$Res> {
       _$MainDTOCopyWithImpl<$Res>;
   $Res call(
       {double? temp,
-      double? feelsLike,
-      double? tempMin,
-      double? tempMax,
+      @JsonKey(name: "feels_like") double? feelsLike,
+      @JsonKey(name: "temp_min") double? tempMin,
+      @JsonKey(name: "temp_max") double? tempMax,
       int? pressure,
-      int? seaLevel,
-      int? grndLevel,
+      @JsonKey(name: "sea_level") int? seaLevel,
+      @JsonKey(name: "grnd_level") int? grndLevel,
       int? humidity,
-      double? tempKf});
+      @JsonKey(name: "temp_kf") double? tempKf});
 }
 
 /// @nodoc
@@ -738,14 +747,14 @@ abstract class _$$_MainDTOCopyWith<$Res> implements $MainDTOCopyWith<$Res> {
   @override
   $Res call(
       {double? temp,
-      double? feelsLike,
-      double? tempMin,
-      double? tempMax,
+      @JsonKey(name: "feels_like") double? feelsLike,
+      @JsonKey(name: "temp_min") double? tempMin,
+      @JsonKey(name: "temp_max") double? tempMax,
       int? pressure,
-      int? seaLevel,
-      int? grndLevel,
+      @JsonKey(name: "sea_level") int? seaLevel,
+      @JsonKey(name: "grnd_level") int? grndLevel,
       int? humidity,
-      double? tempKf});
+      @JsonKey(name: "temp_kf") double? tempKf});
 }
 
 /// @nodoc
@@ -815,14 +824,14 @@ class __$$_MainDTOCopyWithImpl<$Res> extends _$MainDTOCopyWithImpl<$Res>
 class _$_MainDTO implements _MainDTO {
   const _$_MainDTO(
       {this.temp,
-      this.feelsLike,
-      this.tempMin,
-      this.tempMax,
+      @JsonKey(name: "feels_like") this.feelsLike,
+      @JsonKey(name: "temp_min") this.tempMin,
+      @JsonKey(name: "temp_max") this.tempMax,
       this.pressure,
-      this.seaLevel,
-      this.grndLevel,
+      @JsonKey(name: "sea_level") this.seaLevel,
+      @JsonKey(name: "grnd_level") this.grndLevel,
       this.humidity,
-      this.tempKf});
+      @JsonKey(name: "temp_kf") this.tempKf});
 
   factory _$_MainDTO.fromJson(Map<String, dynamic> json) =>
       _$$_MainDTOFromJson(json);
@@ -830,20 +839,26 @@ class _$_MainDTO implements _MainDTO {
   @override
   final double? temp;
   @override
+  @JsonKey(name: "feels_like")
   final double? feelsLike;
   @override
+  @JsonKey(name: "temp_min")
   final double? tempMin;
   @override
+  @JsonKey(name: "temp_max")
   final double? tempMax;
   @override
   final int? pressure;
   @override
+  @JsonKey(name: "sea_level")
   final int? seaLevel;
   @override
+  @JsonKey(name: "grnd_level")
   final int? grndLevel;
   @override
   final int? humidity;
   @override
+  @JsonKey(name: "temp_kf")
   final double? tempKf;
 
   @override
@@ -895,34 +910,40 @@ class _$_MainDTO implements _MainDTO {
 abstract class _MainDTO implements MainDTO {
   const factory _MainDTO(
       {final double? temp,
-      final double? feelsLike,
-      final double? tempMin,
-      final double? tempMax,
+      @JsonKey(name: "feels_like") final double? feelsLike,
+      @JsonKey(name: "temp_min") final double? tempMin,
+      @JsonKey(name: "temp_max") final double? tempMax,
       final int? pressure,
-      final int? seaLevel,
-      final int? grndLevel,
+      @JsonKey(name: "sea_level") final int? seaLevel,
+      @JsonKey(name: "grnd_level") final int? grndLevel,
       final int? humidity,
-      final double? tempKf}) = _$_MainDTO;
+      @JsonKey(name: "temp_kf") final double? tempKf}) = _$_MainDTO;
 
   factory _MainDTO.fromJson(Map<String, dynamic> json) = _$_MainDTO.fromJson;
 
   @override
   double? get temp => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: "feels_like")
   double? get feelsLike => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: "temp_min")
   double? get tempMin => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: "temp_max")
   double? get tempMax => throw _privateConstructorUsedError;
   @override
   int? get pressure => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: "sea_level")
   int? get seaLevel => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: "grnd_level")
   int? get grndLevel => throw _privateConstructorUsedError;
   @override
   int? get humidity => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: "temp_kf")
   double? get tempKf => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

@@ -14,6 +14,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.weatherService) : super(const HomeState.initial());
 
   Future fetch() async {
+    // TODO implement device geolocation later
     final weathers = await weatherService.getWeathers(48.856614, 2.3522219);
     emit(HomeState.loaded(weathers?.weathers ?? <WeatherDateDTO>[]));
   }
