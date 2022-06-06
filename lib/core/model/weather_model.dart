@@ -29,7 +29,7 @@ class WeatherDateDTO with _$WeatherDateDTO {
     int? visibility,
     double? pop,
     SysDTO? sys,
-    String? dtTxt,
+    @JsonKey(name: "dt_txt") String? dtTxt,
   }) = _WeatherDateDTO;
 
   factory WeatherDateDTO.fromJson(Map<String, dynamic> json) =>
@@ -40,14 +40,14 @@ class WeatherDateDTO with _$WeatherDateDTO {
 class MainDTO with _$MainDTO {
   const factory MainDTO({
     double? temp,
-    double? feelsLike,
-    double? tempMin,
-    double? tempMax,
+    @JsonKey(name: "feels_like")double? feelsLike,
+    @JsonKey(name: "temp_min")double? tempMin,
+    @JsonKey(name: "temp_max")double? tempMax,
     int? pressure,
-    int? seaLevel,
-    int? grndLevel,
+    @JsonKey(name: "sea_level")int? seaLevel,
+    @JsonKey(name: "grnd_level")int? grndLevel,
     int? humidity,
-    double? tempKf,
+    @JsonKey(name: "temp_kf")double? tempKf,
   }) = _MainDTO;
 
   factory MainDTO.fromJson(Map<String, dynamic> json) =>

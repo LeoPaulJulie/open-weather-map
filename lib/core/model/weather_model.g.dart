@@ -48,7 +48,7 @@ _$_WeatherDateDTO _$$_WeatherDateDTOFromJson(Map<String, dynamic> json) =>
       sys: json['sys'] == null
           ? null
           : SysDTO.fromJson(json['sys'] as Map<String, dynamic>),
-      dtTxt: json['dtTxt'] as String?,
+      dtTxt: json['dt_txt'] as String?,
     );
 
 Map<String, dynamic> _$$_WeatherDateDTOToJson(_$_WeatherDateDTO instance) =>
@@ -61,32 +61,32 @@ Map<String, dynamic> _$$_WeatherDateDTOToJson(_$_WeatherDateDTO instance) =>
       'visibility': instance.visibility,
       'pop': instance.pop,
       'sys': instance.sys,
-      'dtTxt': instance.dtTxt,
+      'dt_txt': instance.dtTxt,
     };
 
 _$_MainDTO _$$_MainDTOFromJson(Map<String, dynamic> json) => _$_MainDTO(
       temp: (json['temp'] as num?)?.toDouble(),
-      feelsLike: (json['feelsLike'] as num?)?.toDouble(),
-      tempMin: (json['tempMin'] as num?)?.toDouble(),
-      tempMax: (json['tempMax'] as num?)?.toDouble(),
+      feelsLike: (json['feels_like'] as num?)?.toDouble(),
+      tempMin: (json['temp_min'] as num?)?.toDouble(),
+      tempMax: (json['temp_max'] as num?)?.toDouble(),
       pressure: json['pressure'] as int?,
-      seaLevel: json['seaLevel'] as int?,
-      grndLevel: json['grndLevel'] as int?,
+      seaLevel: json['sea_level'] as int?,
+      grndLevel: json['grnd_level'] as int?,
       humidity: json['humidity'] as int?,
-      tempKf: (json['tempKf'] as num?)?.toDouble(),
+      tempKf: (json['temp_kf'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$_MainDTOToJson(_$_MainDTO instance) =>
     <String, dynamic>{
       'temp': instance.temp,
-      'feelsLike': instance.feelsLike,
-      'tempMin': instance.tempMin,
-      'tempMax': instance.tempMax,
+      'feels_like': instance.feelsLike,
+      'temp_min': instance.tempMin,
+      'temp_max': instance.tempMax,
       'pressure': instance.pressure,
-      'seaLevel': instance.seaLevel,
-      'grndLevel': instance.grndLevel,
+      'sea_level': instance.seaLevel,
+      'grnd_level': instance.grndLevel,
       'humidity': instance.humidity,
-      'tempKf': instance.tempKf,
+      'temp_kf': instance.tempKf,
     };
 
 _$_WeatherDetailDTO _$$_WeatherDetailDTOFromJson(Map<String, dynamic> json) =>

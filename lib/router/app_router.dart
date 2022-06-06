@@ -7,6 +7,7 @@ import 'package:open_weather_map/view/page/login_page.dart';
 
 part 'app_router_extensions.dart';
 
+//! Greatly facilitates the implementation of deeplinks
 @MaterialAutoRouter(
   replaceInRouteName: 'Page|Screen,Route',
   routes: <AutoRoute>[
